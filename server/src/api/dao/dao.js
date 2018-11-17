@@ -9,7 +9,7 @@ module.exports = class Dao {
             console.log("dao: connected to database");
             if (err) {
                 console.log("dao: error connecting");
-                callback(500, { error: "feil ved ved oppkobling" });
+                callback(500, { error: "feil ved oppkobling" });
             } else {
                 console.log("dao: running sql: " + sql);
                 connection.query(sql, params, (err, rows) => {

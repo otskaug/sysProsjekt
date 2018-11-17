@@ -6,7 +6,8 @@ module.exports = class articleDao extends Dao {
     getAll(callback) {
         super.query("select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis ",
             [],
-            callback);
+            callback
+        );
     }
 
     getOne(id, callback) {

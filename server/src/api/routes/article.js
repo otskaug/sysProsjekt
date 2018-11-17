@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const articleDao = require("./dao/articleDao.js");
+const ArticleDao = require("../dao/articleDao.js");
 
 var mysql = require("mysql");
 
@@ -10,14 +10,14 @@ var mysql = require("mysql");
 var pool = mysql.createPool({
     connectionLimit: 2,
     host: "mysql.stud.iie.ntnu.no",
-    user: "otkaug",
+    user: "otskaug",
     password: "SWLtzP5H",
     database: "otskaug",
     debug: false
 });
 
 
-let articleDao = new articleDao(pool);
+let articleDao = new ArticleDao(pool);
 
 
 router.get('/', (req, res, next) => {
@@ -41,7 +41,7 @@ router.get('/:articleId', (req, res, next) => {
 });
 
 router.patch('/:articleId', (req, res, next) => {
-    articleDao.updateOne(req.body, (status, data) => {
+    articleDao.updateOne(req.body, req.params.articleId, (status, data) => {
         res.status(status).json(data);
     })
 });
