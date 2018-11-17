@@ -47,7 +47,7 @@ module.exports = class articleDao extends Dao {
             id
         ];
         super.query(
-            "update NettAvis set overskrift=?, innhold=?, tidpunkt=?, bilde=?, kategori=?, viktighet=?, user_fk=? where id=?",
+            "update NettAvis set overskrift=?, innhold=?, tidspunkt=?, bilde=?, kategori=?, viktighet=?, user_fk=? where id=?",
             val,
             callback
         );
