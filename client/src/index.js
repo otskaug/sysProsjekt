@@ -5,6 +5,8 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 import FrontPage from './FrontPage';
+import NavBar from './NavBar';
+import SideMeny from './sideMeny';
 
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {
@@ -22,8 +24,9 @@ if (root)
   ReactDOM.render(
     <HashRouter>
       <div>
-          <FrontPage/>
-          <Route exact path ="/PostArticle" component={FrontPage} />
+          <NavBar/>
+          <SideMeny/>
+          <Route exact path ="/" component={FrontPage} />
       </div>
     </HashRouter>,
     root

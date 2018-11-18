@@ -52,6 +52,17 @@ router.delete('/:articleId', (req, res, next) => {
     })
 });
 
+router.get('/:kategoriId', (req, res, next) => {
+    articleDao.getKategori(req.params.kategoriId, (status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.get('/important', (req, res, next) => {
+    articleDao.getImportant((status, data) => {
+        res.status(status).json(data);
+    })
+})
 
 
 

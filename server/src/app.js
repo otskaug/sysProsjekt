@@ -1,7 +1,12 @@
+import path from "path";
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
+const public_path = path.join(__dirname, '/../../client/public');
+app.use(express.static(public_path));
 
 const articleRoutes = require('./api/routes/article');
 const kategorierRoutes = require('./api/routes/kategorier');
@@ -25,6 +30,7 @@ app.use((req, res, next) => {
     }
     next();
 });
+
 
 app.use('/article', articleRoutes);
 app.use('/kategorier', kategorierRoutes);

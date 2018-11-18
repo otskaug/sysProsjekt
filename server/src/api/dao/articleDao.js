@@ -18,6 +18,22 @@ module.exports = class articleDao extends Dao {
         );
     }
 
+    getKategori(kategori, callback){
+        super.query(
+            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where kategori=?",
+            [kategori],
+            callback
+        );
+    }
+
+    getImportant(callback) {
+        super.query(
+            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where viktighet=0",
+            [kategori],
+            callback
+        );
+    }
+
     createOne(json, callback) {
         var val = [
             json.overskrift,
