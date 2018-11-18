@@ -10,8 +10,15 @@ module.exports = class usersDao extends Dao {
 
     getOne(id, callback) {
         super.query(
-            "select id, name, email from Users where id=?",
+            "select id, name, email, password from Users where id=?",
             [id],
+            callback
+        );
+    }
+    getOnebyEmail(email, callback) {
+        super.query(
+            "select id, name, email ,password from Users where email=?",
+            [email],
             callback
         );
     }

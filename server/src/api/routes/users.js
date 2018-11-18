@@ -38,6 +38,12 @@ router.get('/:userId', (req, res, next) => {
     });
 });
 
+router.get('/email/:email', (req, res, next) => {
+    usersDao.getOnebyEmail(req.params.email, (status, data) => {
+        res.status(status).json(data);
+    });
+});
+
 router.patch('/:userId', (req, res, next) => {
     usersDao.updateOne(req.body, req.params.userId, (status, data) => {
         res.status(status).json(data);

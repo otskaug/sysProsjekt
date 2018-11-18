@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
-import FrontPage from './FrontPage';
-import NavBar from './NavBar';
-import SideMeny from './sideMeny';
+import FrontPage from './Component/FrontPage';
+import NavBar from './Component/NavBar';
+import SideMeny from './Component/sideMeny';
 
 // Reload application when not in production environment
 if (process.env.NODE_ENV !== 'production') {

@@ -40,6 +40,12 @@ router.get('/:articleId', (req, res, next) => {
     });
 });
 
+router.get('/overskrift/:overskrift', (req,res) => {
+    articleDao.getFromOverskrift(req.params.overskrift, (status,data) => {
+        res.status(status).json(data);
+    });
+});
+
 router.patch('/:articleId', (req, res, next) => {
     articleDao.updateOne(req.body, req.params.articleId, (status, data) => {
         res.status(status).json(data);
@@ -52,7 +58,7 @@ router.delete('/:articleId', (req, res, next) => {
     })
 });
 
-router.get('/:kategoriId', (req, res, next) => {
+router.get('/kategori/:kategoriId', (req, res, next) => {
     articleDao.getKategori(req.params.kategoriId, (status, data) => {
         res.status(status).json(data);
     });

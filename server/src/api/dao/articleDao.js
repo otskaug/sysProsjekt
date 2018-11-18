@@ -18,6 +18,14 @@ module.exports = class articleDao extends Dao {
         );
     }
 
+    getFromOverskrift(overskrift, callback) {
+        super.query(
+            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where overskrift=?",
+            [overskrift],
+            callback
+        );
+    }
+
     getKategori(kategori, callback){
         super.query(
             "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where kategori=?",
