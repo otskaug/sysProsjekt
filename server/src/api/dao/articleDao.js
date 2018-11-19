@@ -36,7 +36,7 @@ module.exports = class articleDao extends Dao {
 
     getImportant(callback) {
         super.query(
-            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where viktighet=0",
+            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where viktighet=0 ORDER BY tidspunkt DESC LIMIT 20",
             [kategori],
             callback
         );
