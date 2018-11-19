@@ -64,11 +64,11 @@ router.get('/kategori/:kategoriId', (req, res, next) => {
     });
 });
 
-router.get('/important', (req, res, next) => {
-    articleDao.getImportant((status, data) => {
+router.get('/important/:viktighet', (req, res, next) => {
+    articleDao.getImportant(req.params.viktighet, (status, data) => {
         res.status(status).json(data);
-    })
-})
+    });
+});
 
 
 
