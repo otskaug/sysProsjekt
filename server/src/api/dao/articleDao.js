@@ -41,6 +41,14 @@ module.exports = class articleDao extends Dao {
         );
     }
 
+    getUserArticle(user_fk, callback){
+        super.query(
+            "select * from NettAvis where user_fk=?",
+            [user_fk],
+            callback
+        );
+    }
+
     getImportant(viktighet, callback) {
         super.query(
             "select * from NettAvis where viktighet = ? ORDER BY tidspunkt DESC LIMIT 20",
@@ -69,15 +77,13 @@ module.exports = class articleDao extends Dao {
         var val = [
             json.overskrift,
             json.innhold,
-            json.tidspunkt,
             json.bilde,
             json.kategori,
             json.viktighet,
-            json.user_fk,
             id
         ];
         super.query(
-            "update NettAvis set overskrift=?, innhold=?, tidspunkt=?, bilde=?, kategori=?, viktighet=?, user_fk=? where id=?",
+            "update NettAvis set overskrift=?, innhold=?, bilde=?, kategori=?, viktighet=? where id=?",
             val,
             callback
         );

@@ -35,6 +35,7 @@ router.get('/newest', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     articleDao.createOne(req.body, (status, data) => {
+        if(req.body.overskrift === null || req.body.innhold === null || req.body.bilde === null || req.body.kategori === null || req.body.viktighet === null || req.body.user_fk === null) return res.sendStatus(400);
         res.status(status).json(data);
     })
 });
@@ -54,6 +55,7 @@ router.get('/overskrift/:overskrift', (req,res) => {
 
 router.patch('/:articleId', (req, res, next) => {
     articleDao.updateOne(req.body, req.params.articleId, (status, data) => {
+        if(req.body.overskrift === null || req.body.innhold === null || req.body.bilde === null || req.body.kategori === null || req.body.viktighet === null) return res.sendStatus(400);
         res.status(status).json(data);
     })
 });
@@ -66,6 +68,12 @@ router.delete('/:articleId', (req, res, next) => {
 
 router.get('/kategori/:kategoriId', (req, res, next) => {
     articleDao.getKategori(req.params.kategoriId, (status, data) => {
+        res.status(status).json(data);
+    });
+});
+
+router.get('/user/:userId', (req, res, next) => {
+    articleDao.getUserArticle(req.params.userId, (status, data) => {
         res.status(status).json(data);
     });
 });
