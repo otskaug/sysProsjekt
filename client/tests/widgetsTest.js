@@ -1,5 +1,7 @@
 // @flow
 
+// ikke startet på tester, dette er hentet fra gitlab for tidligere øving
+
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Alert } from '../src/widgets.js';

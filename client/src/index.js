@@ -1,7 +1,6 @@
 
 import ReactDOM from 'react-dom';
 import * as React from 'react';
-import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 import FrontPage from './Component/FrontPage';
 import NavBar from './Component/NavBar';
@@ -24,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 import createHashHistory from 'history/createHashHistory';
-export const history = createHashHistory(); // Use history.push(...) to programmatically change path, for instance after successfully saving a student
+export const history = createHashHistory();
 
 const root = document.getElementById('root');
 if (root)
