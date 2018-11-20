@@ -53,6 +53,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.patch('/:userId', (req, res, next) => {
+    console.log("reachee");
+    console.log(req.body);
     usersDao.updateOne(req.body, req.params.userId, (status, data) => {
         res.status(status).json(data);
     })
