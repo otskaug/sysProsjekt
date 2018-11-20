@@ -40,7 +40,15 @@ router.get('/:userId', (req, res, next) => {
 
 router.get('/email/:email', (req, res, next) => {
     usersDao.getOnebyEmail(req.params.email, (status, data) => {
+
         res.status(status).json(data);
+    });
+});
+
+router.post('/login', (req, res, next) => {
+    usersDao.getOnebyEmail(req.body.email, (status, data) => {
+        if(data[0].password !== req.body.password) return res.sendStatus(401);
+        else return res.status(status).json(data);
     });
 });
 

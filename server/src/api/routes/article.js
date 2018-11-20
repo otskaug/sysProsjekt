@@ -26,6 +26,12 @@ router.get('/', (req, res, next) => {
     })
 });
 
+router.get('/newest', (req, res, next) => {
+    articleDao.getAllLimit((status, data) => {
+        res.status(status).json(data);
+    })
+});
+
 
 router.post('/', (req, res, next) => {
     articleDao.createOne(req.body, (status, data) => {

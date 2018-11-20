@@ -4,7 +4,14 @@ const Dao = require("./dao.js");
 module.exports = class articleDao extends Dao {
 
     getAll(callback) {
-        super.query("select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis ",
+        super.query("select * from NettAvis ",
+            [],
+            callback
+        );
+    }
+
+    getAllLimit(callback) {
+        super.query("select * from NettAvis ORDER BY tidspunkt DESC LIMIT 5",
             [],
             callback
         );
@@ -12,7 +19,7 @@ module.exports = class articleDao extends Dao {
 
     getOne(id, callback) {
         super.query(
-            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where id=?",
+            "select * from NettAvis where id=?",
             [id],
             callback
         );
@@ -20,7 +27,7 @@ module.exports = class articleDao extends Dao {
 
     getFromOverskrift(overskrift, callback) {
         super.query(
-            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where overskrift=?",
+            "select * from NettAvis where overskrift=?",
             [overskrift],
             callback
         );
@@ -28,7 +35,7 @@ module.exports = class articleDao extends Dao {
 
     getKategori(kategori, callback){
         super.query(
-            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where kategori=?",
+            "select * from NettAvis where kategori=?",
             [kategori],
             callback
         );
@@ -36,7 +43,7 @@ module.exports = class articleDao extends Dao {
 
     getImportant(viktighet, callback) {
         super.query(
-            "select overskrift, innhold, bilde, kategori, viktighet, user_fk, tidspunkt from NettAvis where viktighet = ? ORDER BY tidspunkt DESC LIMIT 20",
+            "select * from NettAvis where viktighet = ? ORDER BY tidspunkt DESC LIMIT 20",
             [viktighet],
             callback
         );
@@ -46,14 +53,13 @@ module.exports = class articleDao extends Dao {
         var val = [
             json.overskrift,
             json.innhold,
-            json.tidspunkt,
             json.bilde,
             json.kategori,
             json.viktighet,
             json.user_fk
         ];
         super.query(
-            "insert into NettAvis (overskrift, innhold, tidpunkt, bilde, kategori, viktighet, user_fk) values (?,?,?,?,?,?,?)",
+            "insert into NettAvis (overskrift, innhold, bilde, kategori, viktighet, user_fk) values (?,?,?,?,?,?)",
             val,
             callback
         );
