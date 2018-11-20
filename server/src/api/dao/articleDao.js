@@ -25,6 +25,14 @@ module.exports = class articleDao extends Dao {
         );
     }
 
+    getNews(callback){
+        super.query(
+            "select overskrift, tidspunkt from NettAvis  ORDER BY tidspunkt DESC LIMIT 5",
+            [],
+            callback
+        );
+    }
+
     getFromOverskrift(overskrift, callback) {
         super.query(
             "select * from NettAvis where overskrift=?",

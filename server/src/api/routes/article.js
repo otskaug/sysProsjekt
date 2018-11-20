@@ -72,6 +72,13 @@ router.get('/kategori/:kategoriId', (req, res, next) => {
     });
 });
 
+
+router.get('/news', (req, res) => {
+    articleDao.getNews((status, data) => {
+        res.status(status).json(data);
+    });
+});
+
 router.get('/user/:userId', (req, res, next) => {
     articleDao.getUserArticle(req.params.userId, (status, data) => {
         res.status(status).json(data);
